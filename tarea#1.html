@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Compra</title>
+</head>
+<body>
+    <h1>Calculadora de Compra</h1>
+
+    <label for="nombreProducto">Nombre del producto:</label>
+    <input type="text" id="nombreproducto"><br>
+
+    <label for="cantidadComprada">Cantidad comprada:</label>
+    <input type="number" id="cantidadComprada"><br>
+
+    <label for="precioProducto">Precio del producto:</label>
+    <input type="number" id="precioProducto"><br>
+
+    <button id="calcular">Calcular Total</button>
+
+    <h2>Detalle de la compra:</h2>
+    <p id="detalle"></p>
+
+    <script>
+        document.getElementById("calcular").addEventListener("click", function() {
+            var nombreProducto = document.getElementById("nombreproducto").value;
+            var cantidadComprada = parseInt(document.getElementById("cantidadComprada").value);
+            var precioProducto = parseFloat(document.getElementById("precioProducto").value);
+            
+            var totalPagar = precioProducto * cantidadComprada;
+            
+            var detalle = "Producto: " + nombreProducto + "<br>" +
+                          "Precio por unidad: $" + precioProducto + "<br>" +
+                          "Cantidad comprada: " + cantidadComprada + "<br>" +
+                          "Total a pagar: $" + totalPagar;
+            
+            document.getElementById("detalle").innerHTML = detalle;
+        });
+    </script>
+</body>
+</html>

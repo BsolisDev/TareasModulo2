@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Números</title>
+</head>
+<body>
+    <h1>Evaluación de Números</h1>
+
+    <label for="numero">Ingrese un número:</label>
+    <input type="number" id="numero">
+    <button id="evaluar">Evaluar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById("evaluar").addEventListener("click", function() {
+            var numero = parseFloat(document.getElementById("numero").value);
+            var resultadoElement = document.getElementById("resultado");
+            var resultadoTexto = "";
+
+            if (numero < 10) {
+                resultadoTexto = numero % 2 === 0 ? "El número es par y menor a 10." : "El número es impar y menor a 10.";
+            } else if (numero === 10) {
+                resultadoTexto = "El número es igual a 10.";
+            } else {
+                var cantidadMayoresA10 = 0;
+                var sumaMayoresA10 = 0;
+
+                while (true) {
+                    var otroNumero = parseFloat(prompt("Ingrese otro número mayor a 10 (o ingrese 0 para finalizar):"));
+
+                    if (otroNumero === 0) {
+                        break;
+                    }
+
+                    if (otroNumero > 10) {
+                        cantidadMayoresA10++;
+                        sumaMayoresA10 += otroNumero;
+                    }
+                }
+
+                if (cantidadMayoresA10 > 0) {
+                    resultadoTexto = "Promedio de números mayores a 10: " + (sumaMayoresA10 / cantidadMayoresA10);
+                } else {
+                    resultadoTexto = "No se ingresaron números mayores a 10.";
+                }
+            }
+
+            resultadoElement.innerHTML = resultadoTexto;
+        });
+    </script>
+</body>
+</html>
